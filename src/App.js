@@ -12,7 +12,6 @@ const initialItems = [
 
 const App = () => {
   const [items, setItems] = useState(initialItems);
-  const numItems = items.length;
 
   const handledAddItems = item => {
     setItems(items => [...items, item]);

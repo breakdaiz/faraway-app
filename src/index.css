@@ -6,6 +6,10 @@
   box-sizing: border-box;
 }
 
+ul {
+  overflow: hidden !important;
+}
+
 html {
   font-size: 62.5%;
 }

@@ -1,18 +1,15 @@
 import React from "react";
 
 const Stats = ({ items }) => {
-  // items.filter(item => item.id !== id));
   const numItems = items.length;
-  // item => item.id !== id
+  const numPacked = items.filter(item => item.packed).length;
+  const percentage = Math.round((numPacked / numItems) * 100);
   return (
-    <footer>
+    <footer className='stats'>
       <em>
         👜 You have {numItems} items on your list, and you already packed{" "}
-        {(
-          (items.filter(item => item.packed === true).length / numItems) *
-          100
-        ).toFixed(2)}
-        (X%)
+        {numPacked} ({percentage}
+        %)
       </em>
     </footer>
   );
