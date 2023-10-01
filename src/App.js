@@ -21,6 +21,11 @@ const App = () => {
     setItems(items => items.filter(item => item.id !== id));
   };
 
+  const handleClearItems = () => {
+    const confirmed = window.confirm("Are you sure to delete all items?");
+    if (confirmed) setItems([]);
+  };
+
   const handleToggleItem = id => {
     console.log("handleToggleItem");
     setItems(items =>
@@ -36,6 +41,7 @@ const App = () => {
       <PackingList
         handleToggleItem={handleToggleItem}
         handleDeleteItems={handleDeleteItems}
+        handleClearItems={handleClearItems}
         items={items}
       />
       <Stats items={items} />
