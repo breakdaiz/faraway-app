@@ -11,12 +11,35 @@ const initialItems = [
 ];
 
 const App = () => {
+  const [items, setItems] = useState(initialItems);
+  const numItems = items.length;
+
+  const handledAddItems = item => {
+    setItems(items => [...items, item]);
+  };
+
+  const handleDeleteItems = id => {
+    setItems(items => items.filter(item => item.id !== id));
+  };
+
+  const handleToggleItem = id => {
+    console.log("handleToggleItem");
+    setItems(items =>
+      items.map(item =>
+        item.id === id ? { ...item, packed: !item.packed } : item
+      )
+    );
+  };
   return (
     <div className='app'>
       <Logo />
-      <Form />
-      <PackingList initialItems={initialItems} />
-      <Stats />
+      <Form handledAddItems={handledAddItems} />
+      <PackingList
+        handleToggleItem={handleToggleItem}
+        handleDeleteItems={handleDeleteItems}
+        items={items}
+      />
+      <Stats items={items} />
     </div>
   );
 };
